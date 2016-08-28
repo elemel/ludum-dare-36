@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class CatapultScript : MonoBehaviour {
+public class BallistaScript : MonoBehaviour {
     public float force = 100.0f;
     public float speed = 180.0f;
     public float turnSpeed = 360.0f;
@@ -10,7 +10,7 @@ public class CatapultScript : MonoBehaviour {
     public float maxBrakeTorque = 100.0f;
 
     public GameObject mainCamera;
-    public GameObject boulderPrefab;
+    public GameObject boltPrefab;
 
     private List<WheelCollider> wheelColliders = new List<WheelCollider>();
 
@@ -19,7 +19,7 @@ public class CatapultScript : MonoBehaviour {
 
     public Vector2 input;
     public bool fireInput = false;
-    public float boulderVelocity = 50.0f;
+    public float boltVelocity = 50.0f;
 
     private Rigidbody body;
 
@@ -59,9 +59,9 @@ public class CatapultScript : MonoBehaviour {
         }
 
         if (fireInput) {
-            GameObject boulder = (GameObject) Instantiate(boulderPrefab, transform.position + 1.0f * Vector3.up, Random.rotation);
-            Rigidbody boulderBody = boulder.GetComponent<Rigidbody>();
-            boulderBody.velocity = body.velocity + mainCamera.transform.forward * boulderVelocity;
+            GameObject bolt = (GameObject) Instantiate(boltPrefab, transform.position + 1.0f * Vector3.up, mainCamera.transform.rotation);
+            Rigidbody boltBody = bolt.GetComponent<Rigidbody>();
+            boltBody.velocity = body.velocity + mainCamera.transform.forward * boltVelocity;
         }
     }
 

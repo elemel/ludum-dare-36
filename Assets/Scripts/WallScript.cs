@@ -13,7 +13,6 @@ public class WallScript : MonoBehaviour {
     void OnCollisionEnter(Collision collision) {
         if (body.isKinematic) {
             health -= collision.impulse.magnitude;
-            Debug.Log(health);
 
             if (health < 0.0f) {
                 body.isKinematic = false;
